@@ -41,6 +41,39 @@ app.post("/api/upload",upload.single("file"),(req,res)=>{
 })
 
 // 监听5000端口 启动时执行consolelog
-app.listen("5000",()=>{
-    console.log("Node.js backend is running...");
+// 定义 typeDefs
+const typeDefs = `
+    type Query {
+        hello: String
+    }
+`;
+
+// 定义 resolver
+const resolvers = {
+    Query: {
+        hello: () => 'Hello Rest Blog!'
+    }
+};
+
+const apolloServer = new ApolloServer({
+
+    typeDefs,
+
+    resolvers
+
 });
+app.use("/", require("./routes"))
+const port = process.env.PORT || "5000"
+mongoose.connect(process.env.MONGO_URL,
+    {
+        useNewUrlParser: true,
+        useUnifiedTopology: true
+    })
+    .then(async() =>{
+        await apolloServer.start();
+        apolloServer.applyMiddleware({ app });
+        app.listen(port, () => {
+            console.log("Server start on port " + port);
+        });
+    });
+
