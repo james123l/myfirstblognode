@@ -2,7 +2,7 @@ const User = require("../models/User");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 
-export const register = async (req,res)=>{
+const register = async (req,res)=>{
     try{
         const salt = await bcrypt.genSalt(10);
         // 加密加盐
@@ -22,7 +22,7 @@ export const register = async (req,res)=>{
     }
 }
 
-export const login = async (req,res)=>{
+const login = async (req,res)=>{
     try{
         const user = await  User.findOne({username: req.body.username});
         !user && res.status(400).json("No such user.");
@@ -40,11 +40,11 @@ export const login = async (req,res)=>{
 
 const axios = require("axios");
 
-export const oauthLogin = (req, res)=> {
+const oauthLogin = (req, res)=> {
     res.redirect(`https://github.com/login/oauth/authorize?client_id=${process.env.GITHUB_OAUTH_ID}&redirect_uri=${process.env.GITHUB_OAUTH_DOMAIN}/auth/oauth-callback&scope=user:email`);
 };
 
-export const oauthCallback = async (req ,res) => {
+const oauthCallback = async (req ,res) => {
     try {
         if (!req.query.code) {
             res.status(401).send("Unauthorized, access denied.");
@@ -100,10 +100,12 @@ export const oauthCallback = async (req ,res) => {
     }
 };
 
-export const generateRestToken =  function (payload) {
+const generateRestToken =  function (payload) {
     const token = jwt.sign({payload}, "secretkey", {
         expiresIn: 60 * 60 * 365 * 24 ,
     });
     console.log(payload, "Token generated", token)
     return token
 };
+
+module.exports ={login, oauthLogin, oauthCallback, register, generateRestToken}

@@ -1,6 +1,6 @@
 const Category = require("../models/Category");
 
-export const save = async (req,res) => {
+const save = async (req,res) => {
     const newCat = new Category(req.body);
     try {
         const savedCat = await newCat.save();
@@ -10,7 +10,7 @@ export const save = async (req,res) => {
     }
 }
 
-export const find = async (req,res) => {
+const find = async (req,res) => {
     try {
         const cats = await Category.find();
         res.status(200).json(cats);
@@ -18,3 +18,5 @@ export const find = async (req,res) => {
         res.status(500).json(err);
     }
 }
+
+module.exports = {find, save}

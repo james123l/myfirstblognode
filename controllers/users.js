@@ -2,7 +2,7 @@ const User = require("../models/User");
 const Post = require("../models/Post");
 const bcrypt = require("bcrypt");
 
-export const update =async (req,res)=>{
+const update =async (req,res)=>{
     console.log(req)
     if(req.body.userId === req.params.id){
         if(req.body.password){
@@ -24,7 +24,7 @@ export const update =async (req,res)=>{
         res.status(401).json("You can only update your account.");
     }
 }
-export const deleteU = async (req,res)=>{
+const deleteU = async (req,res)=>{
     if(req.body.userId === req.params.id){
         try{
             const user = await User.findById(req.params.userId);
@@ -45,7 +45,7 @@ export const deleteU = async (req,res)=>{
         res.status(401).json("You can only delete your account.");
     }
 }
-export const get = async (req,res)=>{
+const get = async (req,res)=>{
     if(req.body.userId === req.params.id){
         try{
             const user = await User.findById(req.params.id);
@@ -58,3 +58,5 @@ export const get = async (req,res)=>{
         res.status(401).json("You can only update your account.");
     }
 }
+
+module.exports = {get, deleteU,update}

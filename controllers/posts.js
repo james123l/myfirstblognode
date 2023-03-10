@@ -1,6 +1,6 @@
 const Post = require("../models/Post");
 
-export const add = async (req, res)=>{
+const add = async (req, res)=>{
     const newPost = await new Post(req.body);
     try{
         const savedPost = newPost.save();
@@ -9,7 +9,7 @@ export const add = async (req, res)=>{
         res.status(500).json(err);
     }
 }
-export const findById =async (req, res) => {
+const findById =async (req, res) => {
     try {
         const post = await Post.findById(req.params.id);
         res.status(200).json(post);
@@ -17,7 +17,7 @@ export const findById =async (req, res) => {
         res.status(500).json(err);
     }
 }
-export const deleteP = async (req, res)=>{
+const deleteP = async (req, res)=>{
     try{
         const post = await Post.findById(req.params.id);
         if(post.username=== req.body.username ){
@@ -34,7 +34,7 @@ export const deleteP = async (req, res)=>{
         res.status(500).json(err);
     }
 }
-export const findAll =async (req, res) => {
+const findAll =async (req, res) => {
     const username = req.query.user;
     //catagory
     const catName = req.query.cat;
@@ -56,7 +56,7 @@ export const findAll =async (req, res) => {
         res.status(500).json(err);
     }
 }
-export const update =async (req, res)=>{
+const update =async (req, res)=>{
     try{
         const post = await Post.findById(req.params.id);
         if(post.username=== req.body.username ){
@@ -76,3 +76,5 @@ export const update =async (req, res)=>{
         res.status(500).json(err);
     }
 }
+
+module.exports = {update,deleteP,add,findById,findAll}
