@@ -24,14 +24,14 @@ mongoose.connect(process.env.MONGO_URL,
     }).
     then(console.log("database myblog connected...")).catch(err=> console.log(err));
 
-const storage = multer.diskStorage({
-    destination:(req,file,cb)=>{
-        cb(null,"image");
-    },filename:(req,file,cb)=>{
-        cb(null,req.body.name);
-    }
-});
-const upload= multer({storage:storage});
+// const storage = multer.diskStorage({
+//     destination:(req,file,cb)=>{
+//         cb(null,"image");
+//     },filename:(req,file,cb)=>{
+//         cb(null,req.body.name);
+//     }
+// });
+// const upload= multer({storage:storage});
 
 
 
@@ -79,4 +79,3 @@ mongoose.connect(process.env.MONGO_URL,
             console.log("Server start on port " + port);
         });
     });
-
