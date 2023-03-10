@@ -8,7 +8,7 @@ const cookieParser = require('cookie-parser');
 const dotenv = require("dotenv");
 const mongoose = require("mongoose");
 // const multer = require("multer");
-const ApolloServer = require("apollo-server-express");
+const { ApolloServer } = require("apollo-server-express");
 app.use(cors());
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -38,7 +38,7 @@ mongoose.connect(process.env.MONGO_URL,
 // 绑定路径和中间件
 //app.use(path,callback)中的callback既可以是router对象又可以是函数
 //app.get(path,callback)中的callback只能是函数
-app.use("/", require("./routes"))
+// app.use("/", require("./routes"))
 // app.post("/api/upload",upload.single("file"),(req,res)=>{
 //     res.status(200).json("File has been uploaded");
 // })
