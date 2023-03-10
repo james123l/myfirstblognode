@@ -1,6 +1,9 @@
 // 开启服务
 const express = require("express");
 const app = express();
+const cors = require("cors");
+const bodyParser = require("body-parser");
+const cookieParser = require('cookie-parser');
 //加载配置文件.env
 const dotenv = require("dotenv");
 const mongoose = require("mongoose");
