@@ -5,8 +5,6 @@ const Post = require("../models/Post");
 const bcrypt = require("bcrypt");
 const {  findById, deleteP, add, findAll, update}  = require( "../controllers/posts");
 
-export {}
-
 //create new post
 router.post("/",add );
 

@@ -5,7 +5,6 @@ const Post = require("../models/Post");
 const bcrypt = require("bcrypt");
 const {update, deleteU, get} = require( "../controllers/users");
 
-export {}
 //update
 //update-put save-post del-delete request-get
 router.put("/:id", update );
