@@ -15,7 +15,10 @@ dotenv.config();
 // 使用json
 app.use(express.json());
 mongoose.connect(process.env.MONGO_URL, 
-    {useNewUrlParser: true, useUnifiedTopology: true , useCreateIndex: true,  useFindAndModify:true}).
+    {
+        useNewUrlParser: true,
+        useUnifiedTopology: true
+    }).
     then(console.log("database myblog connected...")).catch(err=> console.log(err));
 
 const storage = multer.diskStorage({
