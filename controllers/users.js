@@ -10,15 +10,12 @@ const update = async (req, res) => {
     if(req.body.userId === req.params.token){
         if(req.body.password){
             const salt = await bcrypt.genSalt(10);
-            req.body.password = await bcrypt.hash(req.body.password,salt);
+            newpassword = await bcrypt.hash(req.body.password,salt);
         }
         try{
-            const updatedUser = await User.findByIdAndUpdate(
-                req.params.id,
-                //update 到数据库
-                {$set:req.body},
-                //更新信息并发送给客户端，否则客户端保持旧的user信息
-                {new: true});
+            const original = await User.findById(req.body.userId);
+            original.password = newpassword;
+            await User.updateOne({_id:req.body.userId}, original)
             res.status(200).json(updatedUser);
         }catch(err){
             res.status(500).json(err);

@@ -18,7 +18,7 @@ content-type: application/json
 }
 
 ###
-POST https://testproj3.onrender.com/users/640d66eaae0c500034a983e2 HTTP/1.1
+PUT https://testproj3.onrender.com/users/640d66eaae0c500034a983e2 HTTP/1.1
 content-type: application/json
 
 {
