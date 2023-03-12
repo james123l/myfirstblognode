@@ -3,10 +3,12 @@ const userRoute = require("./users");
 const postRoute = require("./posts");
 const catagoriesRoute = require("./categories");
 const router = require("express").Router()
+const docRoute = require("./swagger")
 
-router.use("/api/auth",authRoute);
-router.use("/api/users",userRoute);
-router.use("/api/posts",postRoute);
-router.use("/api/categories",catagoriesRoute);
+router.use("/auth",authRoute);
+router.use("/users",userRoute);
+router.use("/posts",postRoute);
+router.use("/categories", catagoriesRoute);
+router.use("/api-docs",docRoute);
 
 module.exports = router
