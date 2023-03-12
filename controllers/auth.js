@@ -14,9 +14,7 @@ const register = async (req,res)=>{
             email:req.body.email,
             password:hashedPass
         });
-        //返回200状态码
-        // async异步请求 先执行前面的语句 在遇到await的时候会等待前面语句执行完毕后继续执行 await后的语句
-        const user = await newUser.save();
+        const { user , _id} = await newUser.save();
         user.token = uuid.v4();
         res.status(200).json(user);
     }catch(err){
@@ -31,9 +29,8 @@ const login = async (req,res)=>{
         const validate = await bcrypt.compare(req.body.password,user.password);
         !validate && res.status(400).json("Wrong password.");
         // 不给用户端发送 password
-        console.log(user._doc);
-        const {password, ...others} = user._doc;
-        console.log(others);
+        const {password, _id, ...others} = user._doc;
+        others.token = uuid.v4();
         res.status(200).json(others);
     }catch(err){
         res.status(500).json(err);
