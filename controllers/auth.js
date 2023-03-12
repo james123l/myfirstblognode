@@ -40,7 +40,8 @@ const login = async (req,res)=>{
 
 const axios = require("axios");
 
-const oauthLogin = (req, res)=> {
+const oauthLogin = (req, res) => {
+    console.log("oauth")
     res.redirect(`https://github.com/login/oauth/authorize?client_id=${process.env.GITHUB_OAUTH_ID}&redirect_uri=${process.env.GITHUB_OAUTH_DOMAIN}/auth/oauth-callback&scope=user:email`);
 };
 
