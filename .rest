@@ -1,0 +1,30 @@
+### 
+POST https://testproj3.onrender.com/auth/register HTTP/1.1
+content-type: application/json
+
+{
+  "password": "123456",
+  "username": "james",
+  "email": "123james@qq.com"
+}
+
+### 
+POST https://testproj3.onrender.com/auth/login HTTP/1.1
+content-type: application/json
+
+{
+  "password": "123456",
+  "username": "james"
+}
+
+###
+POST https://testproj3.onrender.com/users/640d66eaae0c500034a983e2 HTTP/1.1
+content-type: application/json
+
+{
+  "userId": "640d66eaae0c500034a983e2",
+  "password": "123456"
+}
+
+###
+GET https://testproj3.onrender.com/users/640d66eaae0c500034a983e2 HTTP/1.1
