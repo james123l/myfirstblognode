@@ -15,7 +15,7 @@ const register = async (req,res)=>{
             password:hashedPass
         });
         const { user , _id} = await newUser.save();
-        user.token = uuid.v4();
+        user.token = _id;
         res.status(200).json(user);
     }catch(err){
         res.status(500).json(err);
@@ -30,7 +30,7 @@ const login = async (req,res)=>{
         !validate && res.status(400).json("Wrong password.");
         // 不给用户端发送 password
         const {password, _id, ...others} = user._doc;
-        others.token = uuid.v4();
+        others.token = _id;
         res.status(200).json(others);
     }catch(err){
         res.status(500).json(err);
