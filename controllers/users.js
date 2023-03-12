@@ -11,14 +11,15 @@ const update = async (req, res) => {
         if(req.body.password){
             const salt = await bcrypt.genSalt(10);
             newpassword = await bcrypt.hash(req.body.password,salt);
-        }
-        try{
-            const original = await User.findById(req.body.userId);
-            original.password = newpassword;
-            await User.updateOne({_id:req.body.userId}, original)
-            res.status(200).json(updatedUser);
-        }catch(err){
-            res.status(500).json(err);
+            try{
+                const original = await User.findById(req.body.userId);
+                original.password = newpassword;
+                await User.updateOne({_id:req.body.userId}, original)
+                res.status(200).json();
+            } catch (err) {
+                console.log(err)
+                res.status(500).json(err);
+            }
         }
     }else{
         res.status(401).json("You can only update your account.");
