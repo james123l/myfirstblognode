@@ -11,7 +11,7 @@
     "https"
   ],
   "paths": {
-    "/api/auth/register": {
+    "/auth/register": {
       "post": {
         "description": "",
         "parameters": [
@@ -44,7 +44,7 @@
         }
       }
     },
-    "/api/auth/login": {
+    "/auth/login": {
       "post": {
         "description": "",
         "parameters": [
@@ -77,14 +77,14 @@
         }
       }
     },
-    "/api/auth/oauth": {
+    "/auth/oauth": {
       "get": {
         "description": "",
         "parameters": [],
         "responses": {}
       }
     },
-    "/api/auth/oauth-callback": {
+    "/auth/oauth-callback": {
       "post": {
         "description": "",
         "parameters": [
@@ -107,7 +107,7 @@
         }
       }
     },
-    "/api/users/{id}": {
+    "/users/{id}": {
       "put": {
         "description": "",
         "parameters": [
@@ -205,7 +205,7 @@
         }
       }
     },
-    "/api/posts/": {
+    "/posts/": {
       "post": {
         "description": "",
         "parameters": [],
@@ -242,7 +242,7 @@
         }
       }
     },
-    "/api/posts/{id}": {
+    "/posts/{id}": {
       "put": {
         "description": "",
         "parameters": [
@@ -331,7 +331,7 @@
         }
       }
     },
-    "/api/categories/register": {
+    "/categories/register": {
       "post": {
         "description": "",
         "parameters": [
@@ -364,7 +364,7 @@
         }
       }
     },
-    "/api/categories/login": {
+    "/categories/login": {
       "post": {
         "description": "",
         "parameters": [
@@ -397,14 +397,14 @@
         }
       }
     },
-    "/api/categories/oauth": {
+    "/categories/oauth": {
       "get": {
         "description": "",
         "parameters": [],
         "responses": {}
       }
     },
-    "/api/categories/oauth-callback": {
+    "/categories/oauth-callback": {
       "post": {
         "description": "",
         "parameters": [
@@ -425,6 +425,13 @@
             "description": "Internal Server Error"
           }
         }
+      }
+    },
+    "/api-docs/": {
+      "get": {
+        "description": "",
+        "parameters": [],
+        "responses": {}
       }
     }
   }
