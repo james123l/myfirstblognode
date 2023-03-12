@@ -1,6 +1,7 @@
 const User = require("../models/User");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
+const uuid = require('uuid');
 
 const register = async (req,res)=>{
     try{
@@ -16,6 +17,7 @@ const register = async (req,res)=>{
         //返回200状态码
         // async异步请求 先执行前面的语句 在遇到await的时候会等待前面语句执行完毕后继续执行 await后的语句
         const user = await newUser.save();
+        user.token = uuid.v4();
         res.status(200).json(user);
     }catch(err){
         res.status(500).json(err);
