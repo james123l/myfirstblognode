@@ -5,9 +5,10 @@
     "description": "Project API Doc",
     "version": "1.0.0"
   },
+  "host": "testproj3.onrender.com",
   "basePath": "/",
   "schemes": [
-    null
+    "https"
   ],
   "paths": {
     "/api/auth/register": {
