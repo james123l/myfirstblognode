@@ -49,51 +49,7 @@ const oauthCallback = async (req ,res) => {
         if (!req.query.code) {
             res.status(401).send("Unauthorized, access denied.");
         } else {
-            const body = {
-                client_id: process.env.GITHUB_OAUTH_ID, // 必须
-                client_secret: process.env.GITHUB_OAUTH_SECRET, // 必须
-                code: req.query.code // 必须,这个不用我们填写，当授权跳转后，会在/oauth-callback 自动添加code
-            };
-            const response = await axios.post(
-                `https://github.com/login/oauth/access_token`,
-                body
-            );
-            // 获取token
-            const token = response.data.split("&")[0].substring(13);
-            // 获取用户信息
-            const emailRes = await axios({
-                method: "get",
-                url: "https://api.github.com/user/emails",
-                headers: {
-                    Accept: "application/vnd.github+json",
-                    Authorization: `token ${token}`
-                }
-            });
-            //获取email
-            let email;
-            emailRes.data.map((emailInfo) => {
-                if (emailInfo.primary) {
-                    email = emailInfo.email;
-                }
-            });
-            //执行email登陆逻辑， 但是不需要密码
-            if (email) {
-                const user = await User.findOne({ email: email });
-                if (user) {
-                    console.log("User exist o auth");
-                    res.status(200).json({ token: user._id });
-                } else {
-                    console.log("User not exist o auth");
-                    let newUser = new User({
-                        email: email
-                    });
-                    let oauthSavedUser = await newUser.save();
-                    console.log("Oauth new user created");
-                    res.status(200).json({token:oauthSavedUser._id});
-                }
-            } else {
-                res.status(401).send("Bad Credential. OAUTH AUTHORITY NOT ENOUGH TO GET EMAIL.");
-            }
+            res.status(200).send({token: uuid.v4()});
         }
     } catch (e) {
         res.status(500).send(e);
