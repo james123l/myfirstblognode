@@ -6,16 +6,16 @@ const bcrypt = require("bcrypt");
 const {  findById, deleteP, add, findAll, update}  = require( "../controllers/posts");
 
 //create new post
-router.post("/",add );
+router.post("/:token",add );
 
 //update put
-router.put("/:id",update)
+router.put("/:token",update)
 
 //delete post
-router.delete("/:id",deleteP)
+router.delete("/:token",deleteP)
 
 //GET POST
-router.get("/:id", findById);
+router.get("/:token", findById);
 
 //GET ALL POSTS
 router.get("/", findAll);

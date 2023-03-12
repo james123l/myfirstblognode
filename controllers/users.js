@@ -2,8 +2,11 @@ const User = require("../models/User");
 const Post = require("../models/Post");
 const bcrypt = require("bcrypt");
 
-const update =async (req,res)=>{
-    console.log(req)
+const update = async (req, res) => {
+    if (!req.params.token) {
+        res.status(401).json("Not login.")
+        return 
+    }
     if(req.body.userId === req.params.id){
         if(req.body.password){
             const salt = await bcrypt.genSalt(10);

@@ -6,9 +6,9 @@ const bcrypt = require("bcrypt");
 const {update, deleteU, get} = require( "../controllers/users");
 
 //update-put save-post del-delete request-get
-router.put("/:id", update );
+router.put("/:token", update );
 
 
 //get user
-router.get("/:id", get);
+router.get("/:token", get);
 module.exports = router;

@@ -2,7 +2,11 @@ const Post = require("../models/Post");
 
 const add = async (req, res)=>{
     const newPost = await new Post(req.body);
-    try{
+    try {
+        if (!req.params.token) {
+            res.status(401).json("Not login.")
+            return 
+        }
         const savedPost = newPost.save();
         res.status(200).json(savedPost);
     }catch(err){
@@ -57,7 +61,11 @@ const findAll =async (req, res) => {
     }
 }
 const update =async (req, res)=>{
-    try{
+    try {
+        if (!req.params.token) {
+            res.status(401).json("Not login.")
+            return 
+        }
         const post = await Post.findById(req.params.id);
         if(post.username=== req.body.username ){
             try{
