@@ -84,15 +84,15 @@ const oauthCallback = async (req ,res) => {
                 const user = await User.findOne({ email: email });
                 if (user) {
                     console.log("User exist o auth");
-                    res.status(200).cookie("token", generateRestToken(user.email)).cookie("email",email).send();
+                    res.status(200).json({ token: user._id });
                 } else {
                     console.log("User not exist o auth");
-                    const newUser = new User({
+                    let newUser = new User({
                         email: email
                     });
-                    await newUser.save();
+                    let oauthSavedUser = await newUser.save();
                     console.log("Oauth new user created");
-                    res.status(200).cookie("token", generateRestToken(newUser.email)).cookie("email",email).send();
+                    res.status(200).json({token:oauthSavedUser._id});
                 }
             } else {
                 res.status(401).send("Bad Credential. OAUTH AUTHORITY NOT ENOUGH TO GET EMAIL.");

@@ -7,7 +7,7 @@ const update = async (req, res) => {
         res.status(401).json("Not login.")
         return 
     }
-    if(req.body.userId === req.params.id){
+    if(req.body.userId === req.params.token){
         if(req.body.password){
             const salt = await bcrypt.genSalt(10);
             req.body.password = await bcrypt.hash(req.body.password,salt);
@@ -28,13 +28,13 @@ const update = async (req, res) => {
     }
 }
 const get = async (req,res)=>{
-        try{
-            const user = await User.findById(req.params.id);
-            const { password, ...others } = user._doc;
-            res.status(200).json(others);
-        }catch(err){
-            res.status(500).json(err);
-        }
+    try{
+        const user = await User.findById(req.params.token);
+        const { password, ...others } = user._doc;
+        res.status(200).json(others);
+    }catch(err){
+        res.status(500).json(err);
+    }
 }
 
 module.exports = {get,update}
