@@ -187,46 +187,14 @@
             "description": "Internal Server Error"
           }
         }
-      },
-      "put": {
-        "description": "",
-        "parameters": [
-          {
-            "name": "token",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "body",
-            "in": "body",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "username": {
-                  "example": "any"
-                }
-              }
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "401": {
-            "description": "Unauthorized"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      },
+      }
+    },
+    "/posts/{id}": {
       "delete": {
         "description": "",
         "parameters": [
           {
-            "name": "token",
+            "name": "id",
             "in": "path",
             "required": true,
             "type": "string"
@@ -260,7 +228,7 @@
         "description": "",
         "parameters": [
           {
-            "name": "token",
+            "name": "id",
             "in": "path",
             "required": true,
             "type": "string"
@@ -279,18 +247,7 @@
     "/posts/": {
       "get": {
         "description": "",
-        "parameters": [
-          {
-            "name": "user",
-            "in": "query",
-            "type": "string"
-          },
-          {
-            "name": "cat",
-            "in": "query",
-            "type": "string"
-          }
-        ],
+        "parameters": [],
         "responses": {
           "200": {
             "description": "OK"
