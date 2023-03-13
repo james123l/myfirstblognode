@@ -10,6 +10,6 @@ router.post("/register",register);
 //login
 router.post("/login", login)
 router.get("/oauth", oauthLogin)
-router.post("/oauth-callback", oauthCallback)
+router.get("/oauth-callback", oauthCallback)
 
 module.exports = router;
