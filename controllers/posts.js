@@ -7,7 +7,7 @@ const add = async (req, res)=>{
             res.status(401).json("Not login.")
             return 
         }
-        const savedPost = newPost.save();
+        const savedPost = await newPost.save();
         res.status(200).json(savedPost);
     }catch(err){
         res.status(500).json(err);

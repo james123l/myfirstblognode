@@ -28,3 +28,39 @@ content-type: application/json
 
 ###
 GET https://testproj3.onrender.com/users/640d66eaae0c500034a983e2 HTTP/1.1
+
+
+###
+POST https://testproj3.onrender.com/categories/ HTTP/1.1
+content-type: application/json
+
+{
+  "name":"test"
+}
+
+###
+GET https://testproj3.onrender.com/categories/ HTTP/1.1
+
+###
+GET https://testproj3.onrender.com/posts HTTP/1.1
+
+###
+GET https://testproj3.onrender.com/posts/640aafbc9f4f434d56daf881 HTTP/1.1
+
+### 
+POST https://testproj3.onrender.com/posts/640aafbc9f4f434d56daf881 HTTP/1.1
+content-type: application/json
+
+{
+  "categories": ["test"],
+  "_id": "640aafbc9f4f434d56daf881",
+  "createBy": "123james@qq.com",
+  "title": "test",
+  "body": "test",
+  "tags": [
+    "test"
+  ],
+  "views": 0,
+  "access": true,
+}
+
