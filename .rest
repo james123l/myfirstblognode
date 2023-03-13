@@ -53,14 +53,14 @@ content-type: application/json
 
 {
   "categories": ["test"],
-  "_id": "640aafbc9f4f434d56daf881",
-  "createBy": "123james@qq.com",
-  "title": "test",
+  "username":"james",
+  "desc":"test ",
+  "title": "test2",
   "body": "test",
   "tags": [
     "test"
   ],
   "views": 0,
-  "access": true,
+  "access": true
 }
 
