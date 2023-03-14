@@ -24,10 +24,16 @@ const register = async (req,res)=>{
 
 const login = async (req,res)=>{
     try{
-        const user = await  User.findOne({username: req.body.username});
-        !user && res.status(400).json("No such user.");
+        const user = await  User.findOne({email: req.body.email});
+        if (!user) {
+            res.status(400).json("No such user.");
+            return;
+        } 
         const validate = await bcrypt.compare(req.body.password,user.password);
-        !validate && res.status(400).json("Wrong password.");
+        if (!validate) {
+            res.status(400).json("Wrong password.");
+            return;
+        }
         // 不给用户端发送 password
         const {password, _id, ...others} = user._doc;
         others.token = _id;
