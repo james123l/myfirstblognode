@@ -19,4 +19,26 @@ const find = async (req,res) => {
     }
 }
 
-module.exports = {find, save}
+const update = async (req, res) => {
+    try {
+        const updatedCat = await Category.findOneAndUpdate(
+            { name: req.body.name },
+            { $set: { name: req.body.newname } },
+            { new: true }
+        );
+        res.status(200).json(updatedCat);
+    } catch (err) {
+        res.status(500).json(err);
+    }
+}
+
+const deleteCat = async (req, res) => {
+    try {
+        const deletedCat = await Category.findOneAndDelete({ name: req.body.name });
+        res.status(200).json(deletedCat);
+    } catch (err) {
+        res.status(500).json(err);
+    }
+}
+
+module.exports = {find, save, update, deleteCat}

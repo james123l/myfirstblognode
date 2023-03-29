@@ -12,7 +12,7 @@ router.get('/', adminController.getAdmins);
 router.get('/:id', adminController.getAdmin);
 
 // 更新管理员
-router.patch('/:id', adminController.updateAdmin);
+router.put('/:id', adminController.updateAdmin);
 
 // 删除管理员
 router.delete('/:id', adminController.deleteAdmin);

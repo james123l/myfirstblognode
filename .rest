@@ -1,54 +1,70 @@
 ### 
-POST https://testproj3.onrender.com/auth/register HTTP/1.1
+POST http://localhost:5000/auth/register HTTP/1.1
 content-type: application/json
 
 {
   "password": "123456",
-  "username": "james",
-  "email": "123james@qq.com"
+  "username": "jameswfdserwer",
+  "email": "12wer3jfdswermes@qq.com"
 }
 
 ### 
-POST https://testproj3.onrender.com/auth/login HTTP/1.1
+POST http://localhost:5000/auth/login HTTP/1.1
 content-type: application/json
 
 {
   "password": "123456",
-  "username": "james"
+  "email": "12wer3jfdswermes@qq.com"
 }
 
 ###
-PUT https://testproj3.onrender.com/users/640d66eaae0c500034a983e2 HTTP/1.1
+PUT http://localhost:5000/users/6423b0c3cdadd3609cc09240 HTTP/1.1
 content-type: application/json
 
 {
-  "userId": "640d66eaae0c500034a983e2",
+  "userId": "6423b0c3cdadd3609cc09240",
   "password": "123456"
 }
 
 ###
-GET https://testproj3.onrender.com/users/640d66eaae0c500034a983e2 HTTP/1.1
+GET http://localhost:5000/users/640d66eaae0c500034a983e2 HTTP/1.1
 
 
 ###
-POST https://testproj3.onrender.com/categories/ HTTP/1.1
+POST http://localhost:5000/categories/ HTTP/1.1
 content-type: application/json
 
 {
   "name":"test"
 }
 
-###
-GET https://testproj3.onrender.com/categories/ HTTP/1.1
+### 
+PUT http://localhost:5000/categories
+Content-Type: application/json
+
+{
+"name": "test"
+}
 
 ###
-GET https://testproj3.onrender.com/posts HTTP/1.1
+GET http://localhost:5000/categories/ HTTP/1.1
 
 ###
-GET https://testproj3.onrender.com/posts/640aafbc9f4f434d56daf881 HTTP/1.1
+DELETE http://localhost:5000/categories
+Content-Type: application/json
+
+{
+"name": "test"
+}
+
+###
+GET http://localhost:5000/posts HTTP/1.1
+
+###
+GET http://localhost:5000/posts/640d66eaae0c500034a983e2 HTTP/1.1
 
 ### 
-POST https://testproj3.onrender.com/posts/640aafbc9f4f434d56daf881 HTTP/1.1
+POST http://localhost:5000/posts/640d66eaae0c500034a983e2 HTTP/1.1
 content-type: application/json
 
 {
@@ -56,15 +72,12 @@ content-type: application/json
   "username":"james",
   "desc":"test ",
   "title": "test2",
-  "body": "test",
-  "tags": [
+  "categories": [
     "test"
-  ],
-  "views": 0,
-  "access": true
+  ]
 }
-
-PUT https://testproj3.onrender.com/post/1
+###
+PUT http://localhost:5000/posts/640d66eaae0c500034a983e2
 Content-Type: application/json
 
 {
@@ -75,17 +88,17 @@ Content-Type: application/json
     "categories": ["category1", "category2"],
     "lastUpdateDate": "2022-03-28T09:00:00.000Z"
 }
-
+###
 # DELETE /post/:id - Delete a post by ID
-DELETE https://testproj3.onrender.com/post/1
+DELETE http://localhost:5000/post/6423b3f1393efb52d07b6d93
 Content-Type: application/json
 
 {
     "username": "user1"
 }
-
+###
 # POST /admin - ADD
-POST https://testproj3.onrender.com/admin
+POST http://localhost:5000/admin
 Content-Type: application/json
 
 {
@@ -93,20 +106,20 @@ Content-Type: application/json
     "roles": ["admin"],
     "password": "password"
 }
-
+###
 # GET /admin - GET
-GET https://testproj3.onrender.com/admin
-
+GET http://localhost:5000/admin
+###
 # GET /admin/:id - GET
-GET https://testproj3.onrender.com/admin/5fec8bc63b3c3d04b079fda0
-
-# PATCH /admin/:id - UPEATE
-PATCH https://testproj3.onrender.com/admin/5fec8bc63b3c3d04b079fda0
+GET http://localhost:5000/admin/6423b2b64a0b4451082ee035
+###
+# PUT /admin/:id - UPEATE
+PUT http://localhost:5000/admin/6423b31a4a0b4451082ee03d
 Content-Type: application/json
 
 {
     "roles": ["superadmin"]
 }
-
+###
 # DELETE /admin/:id - DEL
-DELETE https://testproj3.onrender.com/admin/5fec8bc63b3c3d04b079fda0
+DELETE http://localhost:5000/admin/6423b2b64a0b4451082ee035

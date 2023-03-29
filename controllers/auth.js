@@ -14,10 +14,11 @@ const register = async (req,res)=>{
             email:req.body.email,
             password:hashedPass
         });
-        const { user , _id} = await newUser.save();
-        user.token = _id;
+        const  user = await newUser.save();
+        user.token = user._id;
         res.status(200).json(user);
-    }catch(err){
+    } catch (err) {
+        console.log(err)
         res.status(500).json(err);
     }
 }

@@ -34,6 +34,7 @@ const getAdmin = async (req, res) => {
 // 更新管理员
 const updateAdmin = async (req, res) => {
     try {
+        console.log(req.params.id);
         const admin = await Admin.findByIdAndUpdate(req.params.id, req.body, { new: true });
         res.status(200).json({ admin });
     } catch (error) {

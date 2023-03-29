@@ -8,7 +8,7 @@ const {  findById, deleteP, add, findAll, update}  = require( "../controllers/po
 //create new post
 router.post("/:token", add);
 
-router.put("/:token",update );
+router.put("/:id",update );
 
 //delete post
 router.delete("/:id",deleteP)
