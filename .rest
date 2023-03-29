@@ -64,3 +64,49 @@ content-type: application/json
   "access": true
 }
 
+PUT https://testproj3.onrender.com/post/1
+Content-Type: application/json
+
+{
+    "title": "Updated Post",
+    "desc": "This post has been updated",
+    "photo": "",
+    "username": "user1",
+    "categories": ["category1", "category2"],
+    "lastUpdateDate": "2022-03-28T09:00:00.000Z"
+}
+
+# DELETE /post/:id - Delete a post by ID
+DELETE https://testproj3.onrender.com/post/1
+Content-Type: application/json
+
+{
+    "username": "user1"
+}
+
+# POST /admin - ADD
+POST https://testproj3.onrender.com/admin
+Content-Type: application/json
+
+{
+    "username": "admin",
+    "roles": ["admin"],
+    "password": "password"
+}
+
+# GET /admin - GET
+GET https://testproj3.onrender.com/admin
+
+# GET /admin/:id - GET
+GET https://testproj3.onrender.com/admin/5fec8bc63b3c3d04b079fda0
+
+# PATCH /admin/:id - UPEATE
+PATCH https://testproj3.onrender.com/admin/5fec8bc63b3c3d04b079fda0
+Content-Type: application/json
+
+{
+    "roles": ["superadmin"]
+}
+
+# DELETE /admin/:id - DEL
+DELETE https://testproj3.onrender.com/admin/5fec8bc63b3c3d04b079fda0

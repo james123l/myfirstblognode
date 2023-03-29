@@ -3,10 +3,12 @@ const User = require("../models/User");
 const Post = require("../models/Post");
 // 加密
 const bcrypt = require("bcrypt");
-const {  findById, deleteP, add, findAll}  = require( "../controllers/posts");
+const {  findById, deleteP, add, findAll, update}  = require( "../controllers/posts");
 
 //create new post
-router.post("/:token",add );
+router.post("/:token", add);
+
+router.put("/:token",update );
 
 //delete post
 router.delete("/:id",deleteP)
