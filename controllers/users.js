@@ -29,12 +29,6 @@ const update = async (req, res) => {
 }
 const get = async (req, res) => {
     try {
-        if (!req.params.id ) {
-            res.status(400).json(
-                "No sufficient information"
-            )
-            return
-        }
         const user = await User.findById(req.params.token);
         const { password, ...others } = user._doc;
         res.status(200).json(others);

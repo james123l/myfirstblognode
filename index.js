@@ -17,12 +17,12 @@ app.use(cookieParser());
 dotenv.config();
 // 使用json
 app.use(express.json());
-mongoose.connect(process.env.MONGO_URL, 
+mongoose.connect(process.env.MONGO_URL,
     {
         useNewUrlParser: true,
         useUnifiedTopology: true
     }).
-    then(console.log("database myblog connected...")).catch(err=> console.log(err));
+    then(console.log("database myblog connected...")).catch(err => console.log(err));
 
 // const storage = multer.diskStorage({
 //     destination:(req,file,cb)=>{
@@ -72,10 +72,12 @@ mongoose.connect(process.env.MONGO_URL,
         useNewUrlParser: true,
         useUnifiedTopology: true
     })
-    .then(async() =>{
+    .then(async () => {
         await apolloServer.start();
         apolloServer.applyMiddleware({ app });
         app.listen(port, () => {
             console.log("Server start on port " + port);
         });
     });
+
+module.exports = app

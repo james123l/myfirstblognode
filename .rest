@@ -40,6 +40,7 @@ POST https://testproj3.onrender.com/categories/ HTTP/1.1
 content-type: application/json
 
 {
+  "userId":"6423b0c3cdadd3609cc09240",
   "name":"test"
 }
 
@@ -48,7 +49,8 @@ PUT https://testproj3.onrender.com/categories
 Content-Type: application/json
 
 {
-"name": "test"
+"name": "test",
+"newname":"123"
 }
 
 ###
@@ -76,7 +78,7 @@ content-type: application/json
   "categories": ["test"],
   "username":"james",
   "desc":"test ",
-  "title": "test233",
+  "title": "test23311",
   "categories": [
     "test"
   ]
