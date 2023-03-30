@@ -15,6 +15,12 @@ const add = async (req, res)=>{
 }
 const findById =async (req, res) => {
     try {
+        if (!req.params.id ) {
+            res.status(400).json(
+                "No sufficient information"
+            )
+            return
+        }
         const post = await Post.findById(req.params.id);
         res.status(200).json(post);
     } catch (err) {
@@ -23,7 +29,13 @@ const findById =async (req, res) => {
 }
 
 const update = async (req, res)=>{
-    try{
+    try {
+        if (!req.params.id ) {
+            res.status(400).json(
+                "No sufficient information"
+            )
+            return
+        }
         const post = await Post.findById(req.params.id);
             try{
                 const updatedPost = await Post.findByIdAndUpdate(req.params.id, {$set:req.body},{new:true});
@@ -38,7 +50,13 @@ const update = async (req, res)=>{
 }
 
 const deleteP = async (req, res)=>{
-    try{
+    try {
+        if (!req.params.id ) {
+            res.status(400).json(
+                "No sufficient information"
+            )
+            return
+        }
         const post = await Post.findById(req.params.id);
         if(post.username=== req.body.username ){
             try{

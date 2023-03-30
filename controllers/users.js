@@ -11,6 +11,12 @@ const update = async (req, res) => {
         const salt = await bcrypt.genSalt(10);
         newpassword = await bcrypt.hash(req.body.password, salt);
         try {
+            if (!req.body.userId ) {
+                res.status(400).json(
+                    "No sufficient information"
+                )
+                return
+            }
             const original = await User.findById(req.body.userId);
             original.password = newpassword;
             await User.updateOne({ _id: req.body.userId }, original)
@@ -23,6 +29,12 @@ const update = async (req, res) => {
 }
 const get = async (req, res) => {
     try {
+        if (!req.params.id ) {
+            res.status(400).json(
+                "No sufficient information"
+            )
+            return
+        }
         const user = await User.findById(req.params.token);
         const { password, ...others } = user._doc;
         res.status(200).json(others);

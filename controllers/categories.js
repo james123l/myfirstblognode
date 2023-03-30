@@ -3,6 +3,12 @@ const Category = require("../models/Category");
 const save = async (req,res) => {
     const newCat = new Category(req.body);
     try {
+        if (!req.body.name ) {
+            res.status(400).json(
+                "No sufficient information"
+            )
+            return
+        }
         const savedCat = await newCat.save();
         res.status(200).json(savedCat);
     } catch (err) {
@@ -21,6 +27,12 @@ const find = async (req,res) => {
 
 const update = async (req, res) => {
     try {
+        if (!req.body.name || !req.body.newname) {
+            res.status(400).json(
+                "No sufficient information"
+            )
+            return
+        }
         const updatedCat = await Category.findOneAndUpdate(
             { name: req.body.name },
             { $set: { name: req.body.newname } },
@@ -34,6 +46,12 @@ const update = async (req, res) => {
 
 const deleteCat = async (req, res) => {
     try {
+        if (!req.body.name ) {
+            res.status(400).json(
+                "No sufficient information"
+            )
+            return
+        }
         const deletedCat = await Category.findOneAndDelete({ name: req.body.name });
         res.status(200).json(deletedCat);
     } catch (err) {

@@ -4,7 +4,12 @@ const jwt = require("jsonwebtoken");
 const uuid = require('uuid');
 
 const register = async (req,res)=>{
-    try{
+    try {
+        const existingUser = await User.findOne({ username: req.body.username });
+        if (existingUser) {
+            res.status(400).json({ message: 'username already exists' });
+            return
+        }
         const salt = await bcrypt.genSalt(10);
         // 加密加盐
         const hashedPass = await bcrypt.hash(req.body.password,salt)
