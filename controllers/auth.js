@@ -68,6 +68,14 @@ const oauthCallback = async (req ,res) => {
     }
 };
 
+const oauthLogout = async (req ,res) => {
+    try {
+        res.status(200)
+    } catch (e) {
+        res.status(500).send(e);
+    }
+};
+
 const generateRestToken =  function (payload) {
     const token = jwt.sign({payload}, "secretkey", {
         expiresIn: 60 * 60 * 365 * 24 ,
