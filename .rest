@@ -1,6 +1,10 @@
 ### 
 ### DONT REQUEST IT, open in the browser
-POST https://testproj3.onrender.com/auth/oauth HTTP/1.1
+GET https://testproj3.onrender.com/auth/oauth HTTP/1.1
+content-type: application/json
+
+###
+POST https://testproj3.onrender.com/auth/logout HTTP/1.1
 content-type: application/json
 
 ### 
@@ -82,6 +86,20 @@ content-type: application/json
   "username":"jameererwer",
   "desc":"test ",
   "title": "test23311",
+  "categories": [
+    "test"
+  ]
+}
+
+### 
+POST https://testproj3.onrender.com/posts HTTP/1.1
+content-type: application/json
+
+{
+  "categories": ["test"],
+  "username":"jameererwer",
+  "desc":"test ",
+  "title": "test2331121",
   "categories": [
     "test"
   ]

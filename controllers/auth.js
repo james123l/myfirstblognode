@@ -70,7 +70,7 @@ const oauthCallback = async (req ,res) => {
 
 const oauthLogout = async (req ,res) => {
     try {
-        res.status(200)
+        res.status(200).send();
     } catch (e) {
         res.status(500).send(e);
     }
