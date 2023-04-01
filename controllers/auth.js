@@ -84,4 +84,4 @@ const generateRestToken =  function (payload) {
     return token
 };
 
-module.exports ={login, oauthLogin, oauthCallback, register, generateRestToken}
+module.exports ={login, oauthLogin, oauthCallback, register, generateRestToken, oauthLogout}
