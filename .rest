@@ -34,6 +34,9 @@ content-type: application/json
 ###
 GET https://testproj3.onrender.com/users/6423b0c3cdadd3609cc09240 HTTP/1.1
 
+###
+DELETE https://testproj3.onrender.com/users/6423b0c3cdadd3609cc09240 HTTP/1.1
+
 
 ###
 POST https://testproj3.onrender.com/categories/ HTTP/1.1

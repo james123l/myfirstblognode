@@ -37,4 +37,14 @@ const get = async (req, res) => {
     }
 }
 
-module.exports = { get, update }
+const deleteU = async (req, res) => {
+    try {
+        const user = await User.findByIdAndDelete(req.params.token);
+        const { password, ...others } = user._doc;
+        res.status(200).json(others);
+    } catch (err) {
+        res.status(500).json(err);
+    }
+}
+
+module.exports = { get, update, deleteU }
